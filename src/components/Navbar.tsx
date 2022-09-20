@@ -5,25 +5,25 @@ import { BsYoutube, BsCameraVideo, BsBell } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoAppsSharp } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { changeSearchTerm, clearSearchTerm, clearVideos } from "../store";
-import { getHomePageMovies } from "../store/reducers/getHomePageMovies";
+import { getSearchPageVideos } from "../store/reducers/getSearchPageVideos";
 
 export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const searchTerm = useSelector((state) => state.youtubeApp.searchTerm);
-
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector((state) => state.youtubeApp.searchTerm);
   const handleSearch = () => {
     if (location.pathname !== "/search") navigate("/search");
     else {
       dispatch(clearVideos());
-      dispatch(getHomePageMovies());
+      dispatch(getSearchPageVideos(false));
     }
   };
+
   return (
-    <div className="flex justify-between items-center px-4 h-14 bg-[#212121] opacity-95 sticky top-0 z-50">
+    <div className="flex justify-between items-center  px-14 h-14 bg-[#212121] opacity-95 sticky top-0 z-50">
       <div className="flex gap-8 items-center text-2xl">
         <div>
           <GiHamburgerMenu />
@@ -31,7 +31,7 @@ export default function Navbar() {
         <Link to="/">
           <div className="flex gap-1 items-center justify-center">
             <BsYoutube className="text-3xl text-red-600" />
-            <span className=" text-xl font-medium">YouTube</span>
+            <span className="text-xl font-medium">YouTube</span>
           </div>
         </Link>
       </div>
@@ -47,7 +47,6 @@ export default function Navbar() {
               <div>
                 <AiOutlineSearch className="text-xl" />
               </div>
-
               <input
                 type="text"
                 className="w-96 bg-zinc-900 focus:outline-none border-none"
@@ -62,10 +61,7 @@ export default function Navbar() {
                 onClick={() => dispatch(clearSearchTerm())}
               />
             </div>
-            <button
-              className="h-10 w-16 flex items-center justify-center bg-zinc-800"
-              onClick={handleSearch}
-            >
+            <button className="h-10 w-16 flex items-center justify-center bg-zinc-800">
               <AiOutlineSearch className="text-xl" />
             </button>
           </div>
@@ -85,8 +81,8 @@ export default function Navbar() {
         </div>
         <img
           src="https://yt3.ggpht.com/wgnEbc2Ec2JYkeyzUbiHzDlAFObI2Btwo2YRCEF1aCMBiRc5E_zWy8-URBQS3EMQ1yzzaGFR=s88-c-k-c0x00ffffff-no-rj-mo"
-          alt="logo"
           className="w-9 h-9 rounded-full"
+          alt="logo"
         />
       </div>
     </div>

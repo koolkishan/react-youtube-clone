@@ -23,22 +23,18 @@ export default function Sidebar() {
     {
       icon: <MdHomeFilled className="text-xl" />,
       name: "Home",
-      // link: "/",
     },
     {
       icon: <FaRegCompass className="text-xl" />,
       name: "Explore",
-      // link: "/explore",
     },
     {
       icon: <MdOutlineSlowMotionVideo className="text-xl" />,
       name: "Shorts",
-      // link: "",
     },
     {
       icon: <MdSubscriptions className="text-xl" />,
       name: "Subscriptions",
-      // link: "",
     },
   ];
 
@@ -123,17 +119,17 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-2/12	bg-[#212121] pr-5 overflow-auto pb-8 sidebar">
+    <div className="w-2/12 bg-[#212121] pr-5 overflow-auto pb-8 sidebar">
       <ul className="flex flex-col border-b-2 border-gray-700">
         {mainLinks.map(({ icon, name }) => {
           return (
             <li
-              className={` pl-6 py-3 hover:bg-zinc-600 ${
-                name === "Home" ? "bg-zinc-600" : ""
-              }`}
               key={name}
+              className={`pl-6 py-3 hover:bg-zinc-600 ${
+                name === "Home" ? "bg-slate-600" : ""
+              }`}
             >
-              <a href="" className="flex items-center gap-5">
+              <a href="#" className="flex items-center gap-5">
                 {icon}
                 <span className="text-sm tracking-wider">{name}</span>
               </a>
@@ -144,13 +140,8 @@ export default function Sidebar() {
       <ul className="flex flex-col border-b-2 border-gray-700">
         {secondaryLinks.map(({ icon, name }) => {
           return (
-            <li
-              className={` pl-6 py-3 hover:bg-zinc-600 ${
-                name === "Home" ? "bg-zinc-600" : ""
-              }`}
-              key={name}
-            >
-              <a href="" className="flex items-center gap-5">
+            <li key={name} className={`pl-6 py-3 hover:bg-zinc-600 `}>
+              <a href="#" className="flex items-center gap-5">
                 {icon}
                 <span className="text-sm tracking-wider">{name}</span>
               </a>
@@ -161,13 +152,8 @@ export default function Sidebar() {
       <ul className="flex flex-col border-b-2 border-gray-700">
         {subscriptionLinks.map(({ icon, name }) => {
           return (
-            <li
-              className={` pl-6 py-3 hover:bg-zinc-600 ${
-                name === "Home" ? "bg-zinc-600" : ""
-              }`}
-              key={name}
-            >
-              <a href="" className="flex items-center gap-5">
+            <li key={name} className={`pl-6 py-3 hover:bg-zinc-600 `}>
+              <a href="#" className="flex items-center gap-5">
                 {icon}
                 <span className="text-sm tracking-wider">{name}</span>
               </a>
@@ -178,13 +164,8 @@ export default function Sidebar() {
       <ul className="flex flex-col border-b-2 border-gray-700">
         {helpLinks.map(({ icon, name }) => {
           return (
-            <li
-              className={` pl-6 py-3 hover:bg-zinc-600 ${
-                name === "Home" ? "bg-zinc-600" : ""
-              }`}
-              key={name}
-            >
-              <a href="" className="flex items-center gap-5">
+            <li key={name} className={`pl-6 py-3 hover:bg-zinc-600 `}>
+              <a href="#" className="flex items-center gap-5">
                 {icon}
                 <span className="text-sm tracking-wider">{name}</span>
               </a>
@@ -197,7 +178,7 @@ export default function Sidebar() {
           return <li key={name}>{name}</li>;
         })}
       </ul>
-      <ul className="flex gap-2 flex-wrap text-sm p-4 pt-0 text-zinc-400">
+      <ul className="flex gap-2 flex-wrap text-sm p-4 text-zinc-400">
         {textLinks[1].map((name) => {
           return <li key={name}>{name}</li>;
         })}
@@ -205,7 +186,7 @@ export default function Sidebar() {
       <span className="px-4 text-sm text-zinc-400">&copy; 2022 Google</span>
       <br />
       <p className="px-4 pt-3 text-sm text-zinc-400">
-        This clone is for educational purpose only
+        This clone is for educational purpose only.
       </p>
     </div>
   );
